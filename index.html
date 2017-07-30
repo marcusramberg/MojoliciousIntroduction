@@ -2,6 +2,9 @@
 <html lang="en">
 
 	<head>
+    
+    <base href="/">
+    
 		<meta charset="utf-8">
 
     <title></title>
@@ -9,16 +12,16 @@
     <meta name="description" content="defies description">
     <meta name="author" content="somebody pretty cool">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="revealjs/css/reveal.css">
     
     <link href="revealjs/css/theme/black.css" id="theme" rel="stylesheet">
 
-		<!-- Code syntax highlighting -->
+		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -57,9 +60,12 @@
   <h1>Introduction to Mojolicious</h1>
 
   <p>
-    <a href="http://mojolicio.us" target="_blank"><img height="200px" src="unicorn.png"></a>
+    <a href="http://mojolicio.us" target="_blank"><img height="200" alt="unicorn" src="unicorn.png"></a>
   </p>
-
+<aside class="notes">
+<li>I'm Marcus Ramberg, and I'm one of the core developers of the Mojolicious Framework</li>
+<li>This is my second Mojolicious Introduction (First one was for Mojolicious 0.99922 in 2010 :)</li>
+</aside>
 </section>
 
 <section>
@@ -67,10 +73,11 @@
   <h2>About this talk</h2>
 
   <ul>
-    <li>I first gave this talk at Chicago.pm on Feb 28, 2013</li>
-    <li>I updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
-    <li>The talk is hosted at <a href="http://jberger.github.io/MojoliciousIntroduction" target="_blank">http://jberger.github.io/MojoliciousIntroduction</a></li>
-    <li>The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction" target="_blank">https://github.com/jberger/MojoliciousIntroduction</a></li>
+    <li>JBerger first gave this talk at Chicago.pm Feb, 2013</li>
+    <li>He updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
+    <li>I've forked it and updated it for YAPC::EU 2017 :)</li>
+    <li>The talk is hosted at <a href="http://marcus.nordaaker.com/MojoliciousIntroduction" target="_blank">http://marcus.nordaaker.com/MojoliciousIntroduction</a></li>
+    <li>The source is available at <a href="https://github.com/marcusramberg/MojoliciousIntroduction" target="_blank">github.com/marcusramberg/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
       <ul>
         <li>are complete and run as shown</li>
@@ -78,13 +85,19 @@
       </ul>
     </li>
   </ul>
+  <aside class="notes">
+    <ul>
+      <li>Joel Berger is another core developer and a great guy, who let me borrow this slide stack</li>
+      <li>I've updated and expanded them for you fine folks, but he did the hard work.</li>
+    </ul>
+  </aside>
 
 </section>
 
 <section>
   <h2>Getting Help</h2>
 
-  <img height="200px" style="float: left;" src="failraptor.png">
+  <img height="200" alt="fail raptor" style="float: left;" src="failraptor.png">
 
   <ul>
     <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
@@ -95,14 +108,14 @@
 
 <section>
   <h2>On with the talk...</h2>
-  <img src="oh-hai.jpg">
+  <img src="oh-hai.jpg" alt="oh hai">
 </section>
 
 <section>
   <section>
     <h2>What is Mojolicious?</h2>
 
-    <img src="noraptor.png">
+    <img src="noraptor.png" alt="no raptor">
 
     <ul>
       <li>An amazing real-time web framework</li>
@@ -110,6 +123,12 @@
       <li>Designed from the ground up</li>
       <li>... based on years of experience developing Catalyst</li>
     </ul>
+  <aside class="notes">
+    <ul>
+    <li>Which is to say, you can make any kind of modern Web Application, including websocket- based ones that run long running async tasks, such as chat clients.</li>
+    <li>Even if you use another framework, Mojolicious can be super useful for slicing and dicing all the components of the web, like JSON or XML services or even scraping web pages.</li>
+  </ul>
+  </aside>
   </section>
 
   <section>
@@ -119,16 +138,25 @@
       <li>Batteries included</li>
       <li>Real-time and non-blocking</li>
       <li>"... perfect for building highly scalable web services"</li>
-      <li>8491 lines of code in lib</li>
-      <li>11237 tests (92.8% coverage)</li>
+      <li>8706 lines of code in lib</li>
+      <li>11415 tests (92.8% coverage)</li>
       <li>Easy to install (secure, only takes one minute!)</li>
     </ul>
-    <pre><code class="bash">curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
-  </section>
+    <pre><code class="bash">curl -L https://cpanmin.us \
+| perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+  <aside class="notes">
+    <ul>
+      <li>Runs on most unices, and as of recently, even Ubuntu on windows is fully supported.</li>
+      <li>At least for reasonably modern Perls. We do have some optional dependencies for things like Socks and SSL, and if you are doing non-blocking
+        in production you probably want EV as well.</li>
+      <li>Counts up to date as of 30. July 2017</li>
+      <li>Sebastian wants you to know that uncovered code is due to the difficulty of testing preforking code.</li>
+      <li>Note, you could also use that method to install cpanminus, which you totally should.</li>
+    </ul>
+  </aside>
 </section>
 
 <section>
-  <section>
     <h2>Mojolicious::Lite</h2>
     <h4>"Hello World"</h4>
     <pre><code class="perl" data-trim>
@@ -283,7 +311,7 @@ done_testing;
 <section>
     <h3> ... but do I really just have to regex the result??? </h3>
 
-    <img src="orly_owl.jpg">
+    <img src="orly_owl.jpg" alt="orly">
 </section>
 
 <section>
@@ -390,9 +418,9 @@ done_testing;
 
   <section>
     <h2>Sessions</h2>
-    <p>Session info is signed and stored in a cookie</li>
+    <p>Session info is signed and stored in a cookie</p>
 
-    <img src="eated-cookie-lolcat.jpg">
+    <img src="eated-cookie-lolcat.jpg" alt="i eated cookie lol">
   </section>
 
   <section>
@@ -538,7 +566,7 @@ done_testing;
   <section>
     <h2>Content Negotiation</h2>
 
-    <img src="erm.jpg">
+    <img src="erm.jpg" alt="Erm">
   </section>
 
   <section>
@@ -573,9 +601,9 @@ any &#39;/:id&#39; =&gt; sub {
   $self-&gt;respond_to(
     txt =&gt; { text =&gt; join(&#39;, &#39;, %$item) },
     json =&gt; { json =&gt; $item },
-    any  =&gt; { 
-      format =&gt; &#39;html&#39;, 
-      template =&gt; &#39;page&#39;, 
+    any  =&gt; {
+      format =&gt; &#39;html&#39;,
+      template =&gt; &#39;page&#39;,
       foo =&gt; $item,
     },
   );
@@ -634,7 +662,7 @@ $t-&gt;get_ok(&#39;/0&#39;)
 
 $t-&gt;get_ok(&#39;/1&#39;)
   -&gt;status_is(200)
-  -&gt;text_like( p =&gt; qr/foo.*?bar/ );
+  -&gt;text_like( p =&gt; qr/foo.*?bar/s );
 
 $t-&gt;get_ok(&#39;/2?format=txt&#39;)
   -&gt;status_is(200)
@@ -659,12 +687,12 @@ done_testing;
 <section>
   <h2>Still not impressed?</h2>
 
-  <img src="mckayla.png">
+  <img src="mckayla.png" alt="Not impressed">
 </section>
 
 <section>
   <section>
-    <img src="sync.jpg">
+    <img src="sync.jpg" alt="sync">
   </section>
 
   <section>
@@ -734,7 +762,9 @@ __DATA__
 
   <section>
         <pre><code class="perl" data-trim>
+#!/usr/bin/env perl
 use Mojolicious::Lite;
+
 
 any &#39;/&#39; =&gt; &#39;index&#39;;
 
@@ -836,11 +866,126 @@ done_testing;
 </section>
 
 <section>
+  <section>
+    <h2>Validation</h2>
+
+    <ul>
+      <li>Mojolicious::Validator</li>
+      <li>Validating User Input</li>
+    </ul>
+  </section>
+
+  <section>
+        <pre><code class="perl" data-trim>
+use Mojolicious::Lite;
+
+
+any &#39;/&#39; =&gt; sub {
+  my $self = shift;
+  my $val=$self-&gt;validation;
+  return $self-&gt;render unless $val-&gt;has_data;
+
+  $val-&gt;required(&#39;user&#39;)-&gt;size(1, 20)-&gt;like(qr/^[a-z0-9]+$/);
+  $val-&gt;required(&#39;pass_again&#39;)-&gt;equal_to(&#39;pass&#39;)
+    if $val-&gt;optional(&#39;pass&#39;)-&gt;size(7, 500)-&gt;is_valid;
+
+
+  $self-&gt;session( user =&gt; $self-&gt;param(&#39;user&#39;) ) unless $val-&gt;has_error;
+} =&gt; &#39;index&#39;;
+
+any &#39;/logout&#39; =&gt; sub {
+  my $self = shift;
+  $self-&gt;session( expires =&gt; 1 );
+  $self-&gt;redirect_to(&#39;/&#39;);
+};
+
+app-&gt;start;
+
+__DATA__
+
+@@ index.html.ep
+
+% my $user = session &#39;user&#39;;
+% title $user ? &quot;Registered as \u$user&quot; : &quot;Please register&quot;;
+% layout &#39;basic&#39;;
+&lt;style&gt;
+  label.field-with-error { color: #dd7e5e }
+  input.field-with-error { background-color: #fd9e7e }
+&lt;/style&gt;
+
+&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+
+% unless ($user) {
+  %= form_for &#39;/&#39; =&gt; method =&gt; &#39;POST&#39; =&gt; begin
+    %= label_for user =&gt; &#39;Username (required, 1-20 characters, a-z/0-9)&#39;
+    &lt;br&gt;
+    %= text_field &#39;user&#39;, id =&gt; &#39;user&#39;
+    &lt;br&gt;
+    %= label_for pass =&gt; &#39;Password (optional, 7-500 characters)&#39;
+    &lt;br&gt;
+    %= password_field &#39;pass&#39;, id =&gt; &#39;pass&#39;
+    &lt;br&gt;
+    %= label_for pass_again =&gt; &#39;Password again (equal to the value above)&#39;
+    &lt;br&gt;
+    %= password_field &#39;pass_again&#39;, id =&gt; &#39;pass_again&#39;
+    %= submit_button
+  % end
+% }
+
+    </code></pre>
+    <p style="float: right; text-color: white; font-size: small;">ex/validation.pl</p>
+
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing Validation</h2>
+
+        <pre><code class="perl" data-trim>
+use Mojo::Base -strict;
+
+use Test::More;
+use Test::Mojo;
+
+use FindBin &#39;$Bin&#39;;
+require &quot;$Bin/validation.pl&quot;;
+
+my $t = Test::Mojo-&gt;new;
+$t-&gt;ua-&gt;max_redirects( 2 );
+
+$t-&gt;get_ok(&#39;/&#39;)
+  -&gt;status_is(200)
+  -&gt;text_is( h1 =&gt; &#39;Please register&#39; )
+  -&gt;element_exists( &#39;form&#39; );
+
+my $registration= { user =&gt; &#39;joel&#39;, pass =&gt; &#39;mypass&#39; };
+$t-&gt;post_ok( &#39;/&#39; =&gt; form =&gt; $registration)
+  -&gt;status_is(200)
+  -&gt;element_exists( &#39;label.field-with-error&#39; );
+
+$registration= { user =&gt; &#39;marcus&#39;, pass =&gt; &#39;ohmypass&#39;, pass_again =&gt; &#39;ohmypass&#39; };
+$t-&gt;post_ok( &#39;/&#39; =&gt; form =&gt; $registration)
+  -&gt;status_is(200)
+  -&gt;text_is( h1 =&gt; &#39;Registered as Marcus&#39; );
+
+$t-&gt;get_ok(&#39;/logout&#39;)
+  -&gt;status_is(200)
+  -&gt;element_exists(&#39;form&#39;);
+
+done_testing;
+    </code></pre>
+    <p style="float: right; text-color: white; font-size: small;">ex/validation.t</p>
+
+  </section>
+</section>
+
+<section>
 
   <section>
     <h2>Mojolicious Apps are More Than Just Web Apps</h2>
 
-    <img src="command.jpg">
+    <img src="command.jpg" alt="command">
   </section>
 
   <section>
@@ -850,7 +995,7 @@ done_testing;
       <li>
         Fetch, parse and extract resources from the internet
         <pre><code class="bash">mojo get -r reddit.com/r/perl 'p.title > a.title' text</code></pre>
-        <pre><code class="bash">mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
+        <pre><code class="bash">mojo get fastapi.metacpan.org/v1/module/Mojo::Base /sloc</code></pre>
       </li>
       <li>
         ... or from your own app!
@@ -860,6 +1005,7 @@ done_testing;
         Examine the routes that your app defines
         <pre><code class="bash">./ex/websocket.pl routes</code></pre>
       </li>
+    </ul>
   </section>
 
   <section>
@@ -896,6 +1042,23 @@ done_testing;
   </section>
 </section>
 
+<section>
+  <section>
+    <h2>Aside: Mojo::File (just added)</h2>
+    <pre><code class="perl">
+use Mojo::File qw(path tempfile);
+my $passwords = path('/etc/passwd')->slurp;
+my $tmpfile = tempfile
+  ->spurt('This is her file')->move_to('/home/her/file');
+    </code></pre>
+    <pre><code class="bash">
+$ perl -Mojo -E 'say r j f("geo.json")
+  ->spurt(g("freegeoip.net/json/mojolicious.org")
+  ->body)->slurp'
+</code></pre>
+
+  </section>
+</section>
 <section>
   <section>
     <h2>If you liked that, see also</h2>
@@ -953,7 +1116,7 @@ done_testing;
 <section>
   <h2>Thanks for listening!</h2>
 
-  <img src="cannot_be_unseen.jpg">
+  <img src="cannot_be_unseen.jpg" alt="Cannot be unseen">
 </section>
 
 <section>
@@ -961,9 +1124,10 @@ done_testing;
 
   <p><a href="http://mojolicio.us">http://mojolicio.us</a></p>
 
-  <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+  <pre><code>curl -L https://cpanmin.us |\ 
+perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 
-  <img style="width: 25%" src="awesome.jpg">
+  <img style="width: 25%" src="awesome.jpg" alt="awesome">
 </section>
 
 			</div>
@@ -977,13 +1141,13 @@ done_testing;
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
       
-      var init = {"transition":"slide","center":true,"history":true,"controls":true,"progress":true};
+      var init = {"center":true,"controls":true,"history":true,"progress":true,"transition":"slide"};
 			// Optional reveal.js plugins
       init.dependencies = [
         { src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
         { src: 'revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
         { src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'revealjs/plugin/zoom-js/zoom.js', async: true },
         { src: 'revealjs/plugin/notes/notes.js', async: true }
       ];
