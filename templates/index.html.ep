@@ -25,11 +25,11 @@
   <h2>About this talk</h2>
 
   <ul>
-    <li>JBerger first gave this talk at Chicago.pm on Feb 28, 2013</li>
+    <li>JBerger first gave this talk at Chicago.pm Feb, 2013</li>
     <li>He updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
-    <li>I've forked it and updated it for you at YAPC::EU 2017 :)</li>
-    <li>The talk is hosted at <a href="http://marcusramberg.github.io/MojoliciousIntroduction" target="_blank">http://marcusramberg.github.io/MojoliciousIntroduction</a></li>
-    <li>The source is available at <a href="https://github.com/marcusramberg/MojoliciousIntroduction" target="_blank">https://github.com/marcusramberg/MojoliciousIntroduction</a></li>
+    <li>I've forked it and updated it for YAPC::EU 2017 :)</li>
+    <li>The talk is hosted at <a href="http://marcus.nordaaker.com/MojoliciousIntroduction" target="_blank">http://marcus.nordaaker.com/MojoliciousIntroduction</a></li>
+    <li>The source is available at <a href="https://github.com/marcusramberg/MojoliciousIntroduction" target="_blank">github.com/marcusramberg/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
       <ul>
         <li>are complete and run as shown</li>
@@ -38,7 +38,10 @@
     </li>
   </ul>
   <aside class="notes">
-  <li>Joel Berger is another core developer.</li>
+    <ul>
+      <li>Joel Berger is another core developer and a great guy, who let me borrow this slide stack</li>
+      <li>I've updated and expanded them for you fine folks, but he did the hard work.</li>
+    </ul>
   </aside>
 
 </section>
@@ -72,6 +75,12 @@
       <li>Designed from the ground up</li>
       <li>... based on years of experience developing Catalyst</li>
     </ul>
+  <aside class="notes">
+    <ul>
+    <li>Which is to say, you can make any kind of modern Web Application, including websocket- based ones that run long running async tasks, such as chat clients.</li>
+    <li>Even if you use another framework, Mojolicious can be super useful for slicing and dicing all the components of the web, like JSON or XML services or even scraping web pages.</li>
+  </ul>
+  </aside>
   </section>
 
   <section>
@@ -81,17 +90,25 @@
       <li>Batteries included</li>
       <li>Real-time and non-blocking</li>
       <li>"... perfect for building highly scalable web services"</li>
-      <li>8491 lines of code in lib</li>
-      <li>11237 tests (92.8% coverage)</li>
+      <li>8706 lines of code in lib</li>
+      <li>11415 tests (92.8% coverage)</li>
       <li>Easy to install (secure, only takes one minute!)</li>
     </ul>
     <pre><code class="bash">curl -L https://cpanmin.us \\
 | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
-  </section>
+  <aside class="notes">
+    <ul>
+      <li>Runs on most unices, and as of recently, even Ubuntu on windows is fully supported.</li>
+      <li>At least for reasonably modern Perls. We do have some optional dependencies for things like Socks and SSL, and if you are doing non-blocking
+        in production you probably want EV as well.</li>
+      <li>Counts up to date as of 30. July 2017</li>
+      <li>Sebastian wants you to know that uncovered code is due to the difficulty of testing preforking code.</li>
+      <li>Note, you could also use that method to install cpanminus, which you totally should.</li>
+    </ul>
+  </aside>
 </section>
 
 <section>
-  <section>
     <h2>Mojolicious::Lite</h2>
     <h4>"Hello World"</h4>
     <pre><code class="perl" data-trim>
