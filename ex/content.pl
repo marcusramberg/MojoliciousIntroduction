@@ -13,9 +13,9 @@ any '/:id' => sub {
   $self->respond_to(
     txt => { text => join(', ', %$item) },
     json => { json => $item },
-    any  => { 
-      format => 'html', 
-      template => 'page', 
+    any  => {
+      format => 'html',
+      template => 'page',
       foo => $item,
     },
   );
