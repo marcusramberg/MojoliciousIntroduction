@@ -1,4 +1,6 @@
+#!/usr/bin/env perl
 use Mojolicious::Lite;
+
 
 any '/' => 'index';
 

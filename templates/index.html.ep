@@ -14,7 +14,10 @@
   <p>
     <a href="http://mojolicio.us" target="_blank"><img height="200" alt="unicorn" src="unicorn.png"></a>
   </p>
-
+<aside class="notes">
+<li>I'm Marcus Ramberg, and I'm one of the core developers of the Mojolicious Framework</li>
+<li>This is my second Mojolicious Introduction (First one was for Mojolicious 0.99922 in 2010 :)</li>
+</aside>
 </section>
 
 <section>
@@ -24,7 +27,7 @@
   <ul>
     <li>JBerger first gave this talk at Chicago.pm on Feb 28, 2013</li>
     <li>He updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
-    <li>I've forked it and updated it for you guys at YAPC::EU 2017 :)</li>
+    <li>I've forked it and updated it for you at YAPC::EU 2017 :)</li>
     <li>The talk is hosted at <a href="http://marcusramberg.github.io/MojoliciousIntroduction" target="_blank">http://marcusramberg.github.io/MojoliciousIntroduction</a></li>
     <li>The source is available at <a href="https://github.com/marcusramberg/MojoliciousIntroduction" target="_blank">https://github.com/marcusramberg/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
@@ -34,6 +37,9 @@
       </ul>
     </li>
   </ul>
+  <aside class="notes">
+  <li>Joel Berger is another core developer.</li>
+  </aside>
 
 </section>
 
