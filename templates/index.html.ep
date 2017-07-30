@@ -12,9 +12,12 @@
   <h1>Introduction to Mojolicious</h1>
 
   <p>
-    <a href="http://mojolicio.us" target="_blank"><img height="200px" src="unicorn.png"></a>
+    <a href="http://mojolicio.us" target="_blank"><img height="200" alt="unicorn" src="unicorn.png"></a>
   </p>
-
+<aside class="notes">
+<li>I'm Marcus Ramberg, and I'm one of the core developers of the Mojolicious Framework</li>
+<li>This is my second Mojolicious Introduction (First one was for Mojolicious 0.99922 in 2010 :)</li>
+</aside>
 </section>
 
 <section>
@@ -22,10 +25,11 @@
   <h2>About this talk</h2>
 
   <ul>
-    <li>I first gave this talk at Chicago.pm on Feb 28, 2013</li>
-    <li>I updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
-    <li>The talk is hosted at <a href="http://jberger.github.io/MojoliciousIntroduction" target="_blank">http://jberger.github.io/MojoliciousIntroduction</a></li>
-    <li>The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction" target="_blank">https://github.com/jberger/MojoliciousIntroduction</a></li>
+    <li>JBerger first gave this talk at Chicago.pm on Feb 28, 2013</li>
+    <li>He updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
+    <li>I've forked it and updated it for you at YAPC::EU 2017 :)</li>
+    <li>The talk is hosted at <a href="http://marcusramberg.github.io/MojoliciousIntroduction" target="_blank">http://marcusramberg.github.io/MojoliciousIntroduction</a></li>
+    <li>The source is available at <a href="https://github.com/marcusramberg/MojoliciousIntroduction" target="_blank">https://github.com/marcusramberg/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
       <ul>
         <li>are complete and run as shown</li>
@@ -33,13 +37,16 @@
       </ul>
     </li>
   </ul>
+  <aside class="notes">
+  <li>Joel Berger is another core developer.</li>
+  </aside>
 
 </section>
 
 <section>
   <h2>Getting Help</h2>
 
-  <img height="200px" style="float: left;" src="failraptor.png">
+  <img height="200" alt="fail raptor" style="float: left;" src="failraptor.png">
 
   <ul>
     <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
@@ -50,14 +57,14 @@
 
 <section>
   <h2>On with the talk...</h2>
-  <img src="oh-hai.jpg">
+  <img src="oh-hai.jpg" alt="oh hai">
 </section>
 
 <section>
   <section>
     <h2>What is Mojolicious?</h2>
 
-    <img src="noraptor.png">
+    <img src="noraptor.png" alt="no raptor">
 
     <ul>
       <li>An amazing real-time web framework</li>
@@ -78,7 +85,8 @@
       <li>11237 tests (92.8% coverage)</li>
       <li>Easy to install (secure, only takes one minute!)</li>
     </ul>
-    <pre><code class="bash">curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+    <pre><code class="bash">curl -L https://cpanmin.us \\
+| perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
   </section>
 </section>
 
@@ -176,7 +184,7 @@ app->start;
 <section>
     <h3> ... but do I really just have to regex the result??? </h3>
 
-    <img src="orly_owl.jpg">
+    <img src="orly_owl.jpg" alt="orly">
 </section>
 
 <section>
@@ -240,9 +248,9 @@ app->start;
 
   <section>
     <h2>Sessions</h2>
-    <p>Session info is signed and stored in a cookie</li>
+    <p>Session info is signed and stored in a cookie</p>
 
-    <img src="eated-cookie-lolcat.jpg">
+    <img src="eated-cookie-lolcat.jpg" alt="i eated cookie lol">
   </section>
 
   <section>
@@ -292,7 +300,7 @@ app->start;
   <section>
     <h2>Content Negotiation</h2>
 
-    <img src="erm.jpg">
+    <img src="erm.jpg" alt="Erm">
   </section>
 
   <section>
@@ -339,12 +347,12 @@ app->start;
 <section>
   <h2>Still not impressed?</h2>
 
-  <img src="mckayla.png">
+  <img src="mckayla.png" alt="Not impressed">
 </section>
 
 <section>
   <section>
-    <img src="sync.jpg">
+    <img src="sync.jpg" alt="sync">
   </section>
 
   <section>
@@ -404,7 +412,7 @@ app->start;
   <section>
     <h2>Mojolicious Apps are More Than Just Web Apps</h2>
 
-    <img src="command.jpg">
+    <img src="command.jpg" alt="command">
   </section>
 
   <section>
@@ -424,6 +432,7 @@ app->start;
         Examine the routes that your app defines
         <pre><code class="bash">./ex/websocket.pl routes</code></pre>
       </li>
+    </ul>
   </section>
 
   <section>
@@ -517,7 +526,7 @@ app->start;
 <section>
   <h2>Thanks for listening!</h2>
 
-  <img src="cannot_be_unseen.jpg">
+  <img src="cannot_be_unseen.jpg" alt="Cannot be unseen">
 </section>
 
 <section>
@@ -527,6 +536,6 @@ app->start;
 
   <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 
-  <img style="width: 25%" src="awesome.jpg">
+  <img style="width: 25%" src="awesome.jpg" alt="awesome">
 </section>
 
