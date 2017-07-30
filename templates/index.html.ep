@@ -425,6 +425,29 @@ app->start;
 </section>
 
 <section>
+  <section>
+    <h2>Validation</h2>
+
+    <ul>
+      <li>Mojolicious::Validator</li>
+      <li>Validating User Input</li>
+    </ul>
+  </section>
+
+  <section>
+    %= include_code 'ex/validation.pl'
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing Validation</h2>
+
+    %= include_code 'ex/validation.t'
+  </section>
+</section>
+
+<section>
 
   <section>
     <h2>Mojolicious Apps are More Than Just Web Apps</h2>
@@ -439,7 +462,7 @@ app->start;
       <li>
         Fetch, parse and extract resources from the internet
         <pre><code class="bash">mojo get -r reddit.com/r/perl 'p.title > a.title' text</code></pre>
-        <pre><code class="bash">mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
+        <pre><code class="bash">mojo get fastapi.metacpan.org/v1/module/Mojo::Base /sloc</code></pre>
       </li>
       <li>
         ... or from your own app!
@@ -486,6 +509,23 @@ app->start;
   </section>
 </section>
 
+<section>
+  <section>
+    <h2>Aside: Mojo::File (just added)</h2>
+    <pre><code class="perl">
+use Mojo::File qw(path tempfile);
+my $passwords = path('/etc/passwd')->slurp;
+my $tmpfile = tempfile
+  ->spurt('This is her file')->move_to('/home/her/file');
+    </code></pre>
+    <pre><code class="bash">
+$ perl -Mojo -E 'say r j f("geo.json")
+  ->spurt(g("freegeoip.net/json/mojolicious.org")
+  ->body)->slurp'
+</code></pre>
+
+  </section>
+</section>
 <section>
   <section>
     <h2>If you liked that, see also</h2>
@@ -551,7 +591,8 @@ app->start;
 
   <p><a href="http://mojolicio.us">http://mojolicio.us</a></p>
 
-  <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+  <pre><code>curl -L https://cpanmin.us |\ 
+perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 
   <img style="width: 25%" src="awesome.jpg" alt="awesome">
 </section>
