@@ -3,7 +3,7 @@ use Mojo::UserAgent;
 use Mojo::URL;
 
 my $ua = Mojo::UserAgent->new;
-my $url = Mojo::URL->new('http://api.metacpan.org/pod/')
+my $url = Mojo::URL->new('http://fastapi.metacpan.org/v1/pod/')
                    ->query( 'content-type' => 'text/html' );
 
 any '/:module' => { module => 'Mojolicious' } => sub {

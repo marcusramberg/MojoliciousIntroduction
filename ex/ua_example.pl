@@ -3,7 +3,7 @@ use Mojo::UserAgent;
 
 my $ua = Mojo::UserAgent->new(max_redirects => 10);
 
-say $ua->get('api.metacpan.org/v0/release/Mojolicious')
+say $ua->get('fastapi.metacpan.org/v1/release/Mojolicious')
        ->res->json->{version};
 
 use Mojo::URL;

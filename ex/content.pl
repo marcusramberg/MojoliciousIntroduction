@@ -11,7 +11,7 @@ any '/:id' => sub {
     unless my $item = $data{$self->stash('id')};
 
   $self->respond_to(
-    txt => { text => join(', ', %$item) },
+    txt  => { text => join(', ', %$item) },
     json => { json => $item },
     any  => {
       format => 'html',

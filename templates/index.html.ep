@@ -56,6 +56,13 @@
     <li><a href="http://mojocasts.com/e1" target="_blank">http://mojocasts.com/e1</a></li>
     <li><a href="http://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org" target="_blank">#mojo on irc.perl.org</a></li>
   </ul>
+  <aside class="notes">
+    <ul>
+      <li>The guides are great, start with Mojolicious::Lite introduction and routing/rendering/cookbook</li>
+      <li>The mojocast slides are a bit aged, but still very good if like learning from screencasts</li>
+      <li>There's also a mailing list if you're not comfortable with real time communication</li>
+    </ul
+  </aside>
 </section>
 
 <section>
@@ -260,6 +267,11 @@ app->start;
         </ul>
       </li>
     </ul>
+  <aside class="notes">
+    <ul>
+      <li>DefaultHelpers: app, b, c, current_route, include, dumper++</li>
+    </ul>
+  </aside>
 
   </section>
 
@@ -511,7 +523,7 @@ app->start;
 
 <section>
   <section>
-    <h2>Aside: Mojo::File (just added)</h2>
+    <h2>One last thing: Mojo::File</h2>
     <pre><code class="perl">
 use Mojo::File qw(path tempfile);
 my $passwords = path('/etc/passwd')->slurp;
@@ -545,11 +557,11 @@ $ perl -Mojo -E 'say r j f("geo.json")
       </li>
       <li>
         <a href="http://metacpan.org/module/Galileo">Galileo</a>
-        - My CPAN friendly Mojolicious-based CMS
+        - Joel's CPAN friendly Mojolicious-based CMS
       </li>
       <li>
         <a href="http://metacpan.org/module/Convos">Convos</a>
-        - The in-browser Mojolicious-based IRC client
+        - Me and Batman's in-browser Mojolicious-based IRC client
       </li>
     </ul>
   </section>
