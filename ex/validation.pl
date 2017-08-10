@@ -6,12 +6,14 @@ any '/' => sub {
   my $val=$self->validation;
   return $self->render unless $val->has_data;
 
-  $val->required('user')->size(1, 20)->like(qr/^[a-z0-9]+$/);
+  $val->required('user')->size(1, 20)
+                        ->like(qr/^[a-z0-9]+$/);
   $val->required('pass_again')->equal_to('pass')
-    if $val->optional('pass')->size(7, 500)->is_valid;
+    if $val->optional('pass')->size(7, 500)
+                             ->is_valid;
 
-
-  $self->session( user => $self->param('user') ) unless $val->has_error;
+  $self->session( user => $self->param('user') )
+    unless $val->has_error;
 } => 'index';
 
 any '/logout' => sub {
